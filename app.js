@@ -19,6 +19,10 @@ let originOptionCors = {
 // Cors Option
 app.use(cors(originOptionCors));
 
+// Express Json
+
+app.use(express.json());
+
 // Routing
 app.use(`/`, router);
 

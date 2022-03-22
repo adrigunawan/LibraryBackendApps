@@ -1,13 +1,12 @@
-'use strict'
-const express = require('express');
-const router = express.Router();
-const {Controller} = require('../controller/Controller');
-const {BookRouter} = require('./BookRouter');
-const {UserRouter} = require('./UserRouter');
+"use strict"
 
+const express = require("express");
+const router = express.Router();
+const { Controller } = require("../controller/Controller");
+const { bookRouter } = require("./bookRouter");
 
 // Router homepage
-router.get('/', Controller.homepage);
+router.get("/", Controller.homepage);
 
 // Router login
 // router.post('/login', Controller.login);
@@ -16,9 +15,8 @@ router.get('/', Controller.homepage);
 // router.post('/register', Controller.register);
 
 // Routing book
-router.use('/books', BookRouter);
+router.use("/books", bookRouter);
 
 // Routing user
-router.use ('/users', UserRouter);
 
-module.exports = {router};
+module.exports = { router };
