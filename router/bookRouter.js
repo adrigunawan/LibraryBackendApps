@@ -10,11 +10,14 @@ const { BookController } = require("../controller/bookController");
 // Routing allbooks
 bookRouter.get("/", BookController.getAllBooks);
 
-// Routing books by id
-bookRouter.get('/id',BookController.getBooksById);
+// Routing showAllBooks
+// bookRouter.get('/',BookController.showAllBooks);
+
+// Routing getBookById
+bookRouter.get("/:id", BookController.getBookById);
 
 // Routing addNewBooks
-// router.post('/add/:id',BookController.addNewbooks);
+// router.post('/add',BookController.addNewbooks);
 
 // Routing UpdateBooks
 // router.put('/update/:id',BookController.updateBook);

@@ -14,6 +14,7 @@ class Controller {
     // static register(req, res) {
     //     res.send('Halaman register');
     // }
+    
 }
 
 module.exports = {

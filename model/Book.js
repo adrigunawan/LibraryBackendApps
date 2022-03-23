@@ -51,34 +51,77 @@ class Book {
     
     */
 
-  static selectAllBooks(result) {
+  static showAllBooks(result) {
     let sqlQuery = `SELECT * FROM book`;
     sql.query(sqlQuery, (err, res) => {
       if (err) {
         console.log("This is Error /n", err);
         result(null, res);
       } else {
+        let rawData = res;
+        let books = [];
+        let book;
+
+        rawData.forEach((eachData) => {
+          book = new Book(
+            eachData.id,
+            eachData.book_title,
+            eachData.book_author,
+            eachData.book_genre,
+            eachData.book_isbn,
+            eachData.book_year,
+            eachData.book_price,
+            eachData.book_stock,
+            eachData.create_at,
+            eachData.update_at
+          );
+
+          books.push(book);
+        });
+
         console.log("result", res);
-        result(null, res);
+        result(null, books);
       }
     });
-  };
+  }
 
-  static selectBooksById(result) {
-    let sqlQuery = `SELECT * FROM book where id = 1`;
+  static showBookById(id, result) {
+    let sqlQuery = `SELECT * FROM book WHERE id = ${id}`;
     sql.query(sqlQuery, (err, res) => {
       if (err) {
         console.log("This is Error /n", err);
-        result(err, res);
-
+        result (null, res);
       } else {
+        let rawData = res;
+        let books = [];
+        let book;
+
+        rawData.forEach((eachData) => {
+          book = new Book(
+            eachData.id,
+            eachData.book_title,
+            eachData.book_author,
+            eachData.book_genre,
+            eachData.book_isbn,
+            eachData.book_year,
+            eachData.book_price,
+            eachData.book_stock,
+            eachData.create_at,
+            eachData.update_at
+          );
+          books.push(book);
+        });
+
         console.log("result", res);
-        result(result, res);
+        result(null, books);
       }
     });
-  };
-}
+  }
 
+  static updateBookById (res, req) {
+
+  }
+}
 module.exports = {
   Book,
 };

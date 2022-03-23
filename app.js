@@ -23,6 +23,9 @@ app.use(cors(originOptionCors));
 
 app.use(express.json());
 
+// Parse Request
+app.use(express.urlencoded({extended: true}));
+
 // Routing
 app.use(`/`, router);
 
